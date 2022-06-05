@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CC News</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar sticky-top" style="background-color: #8B0000;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand mb-0 h1" href="/" style="color: beige"> -) CC News</a>
+                </div>
+            </div>
+        </nav>
+        
+        {% for title, desc, img, url, date in mylist %}
+        <article>
+            <div class="container-fluid">
+                <div class="rows">
+                    <div class="col-md-12">
+                        <h2 class="title">{{ title }}</h2>
+                        <p class="subtitle">{{ date }}</p>
+                        <div class="thumbnail">
+                            <a href="{{ url }}"><img src="{{ img }}" alt="" style="width:100%"></a>
+                            <div class="caption">
+                                <p class="subtitle">{{ desc }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+        <footer>
+            <div class="text-center p-3" style="background-color: grey">
+                <p class="font-weight-light">
+                    I have no rights to these articles: 
+                    <a class="text-dark" href="https://newsapi.org/">Powered by NewsAPI</a>
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
