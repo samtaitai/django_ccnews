@@ -3,6 +3,7 @@
 *.pot
 *.pyc
 __pycache__/
-local_setting.py
+settings.py
 db.sqlite3
 media
+secret.json
