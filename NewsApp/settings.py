@@ -11,23 +11,19 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import dj_database_url
-import os, sys, json
+import os, json
 from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = ...
-ROOT_DIR = os.path.dirname(BASE_DIR)
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRETS_PATH = os.path.join(ROOT_DIR, 'secret.json')
-secret = json.loads(open(SECRETS_PATH).read())
-
-for key, value in secret.items():
-    setattr(sys.modules[__name__], key, value)
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
