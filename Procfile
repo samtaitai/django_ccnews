@@ -1,0 +1,1 @@
+web: gnicorn NewsApp.wsgi --log-file - 
