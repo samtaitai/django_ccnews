@@ -23,15 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR, '/NewsApp/secret.json') # secrets.json 파일 위치를 명시
+secret_file = os.path.join(BASE_DIR, 'secret.json') # secrets.json 파일 위치를 명시
 
 with open(secret_file) as f:
-    secrets = json.loads(f.read())
+    secret = json.loads(f.read())
 
-def get_secret(setting, secrets=secrets):
+def get_secret(setting, secret=secret):
     """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
     try:
-        return secrets[setting]
+        return secret[setting]
     except KeyError:
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
