@@ -11,32 +11,23 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import dj_database_url
-import os, json
+import os, sys, json
 from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = ...
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR, 'secret.json') # secrets.json 파일 위치를 명시
+SECRETS_PATH = os.path.join(ROOT_DIR, 'secret.json')
+secret = json.loads(open(SECRETS_PATH).read())
 
-with open(secret_file) as f:
-    secret = json.loads(f.read())
-
-def get_secret(setting, secret=secret):
-    """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
-    try:
-        return secret[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-SECRET_KEY = get_secret("SECRET_KEY")
+for key, value in secret.items():
+    setattr(sys.modules[__name__], key, value)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
