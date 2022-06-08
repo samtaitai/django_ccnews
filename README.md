@@ -1,5 +1,5 @@
 # CCnews
-By using NewsAPI, this website is crawling news articles based on specific topics(in this case, Marvel's Daredevel😈) sorted by relevancy.
+By using NewsAPI, this website is crawling news articles based on specific topics(in this case, Marvel's Daredevil😈) sorted by relevancy.
 
 ## Features
 * Clicking the site title on the sticky nav bar refreshes the site. 
