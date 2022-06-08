@@ -7,4 +7,4 @@ By using NewsAPI, this website is crawling news articles based on specific topic
 
 ## Lessons Learned
 * This is my first Django project after finishing djangogirls tutorial. (Thank you so much djangogirls!) I got the basic idea of the dynamics between view, template, and url controller in django framework.
-* Also this is my first successful deployment by Heroku. I've learned how to securely hangle django secret key. 
+* Also this is my first successful deployment by Heroku. I've learned how to securely handle django secret key. 
